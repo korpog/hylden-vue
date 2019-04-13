@@ -6,12 +6,12 @@ constructor(){
 }
 
 getPosts() {
-    const url = `${API_URL}/api/posts/`;
+    const url = `${API_URL}/posts/`;
     return axios.get(url).then(response => response.data);
 }
 
 getPost(pk) {
-    const url = `${API_URL}/api/posts/${pk}`;
+    const url = `${API_URL}/posts/${pk}`;
     return axios.get(url).then(response => response.data);
 }
 
