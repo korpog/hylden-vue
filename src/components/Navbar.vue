@@ -23,7 +23,10 @@
             <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
           </b-nav-form>
 
-          <b-nav-item-dropdown right>
+          <b-nav-item v-if="loggedIn">
+            <SignUp></SignUp>
+          </b-nav-item>
+          <b-nav-item-dropdown right v-else>
             <template slot="button-content">
               <em>User</em>
             </template>
@@ -38,13 +41,21 @@
 </template>
 
 <script>
+import SignUp from "./User/SignUp.vue";
+
 export default {
-  name: "Navbar"
+  name: "Navbar",
+  props: {
+    loggedIn: { type: Boolean, default: true }
+  },
+  components: {
+    SignUp
+  }
 };
 </script>
 
 <style scoped>
 b-navbar {
-  font-family: 'Proza Libre', sans-serif;
+  font-family: "Proza Libre", sans-serif;
 }
 </style>

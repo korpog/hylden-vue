@@ -39,7 +39,7 @@ export default {
   border: 2px solid black;
 }
 .header {
-  font-family: "Proza Libre", sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 1.2em;
   border-bottom: solid 1px black;
 }
