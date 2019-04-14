@@ -1,12 +1,12 @@
 <template>
-  <div class="container">
+  <b-container>
     <h1>Posts</h1>
 
     <div v-for="post in posts" v-bind:key="post.id">
       <PostItem :title="post.title" :category="post.category" :text="post.text" 
       :sources="post.sources" :score="post.score" :created="post.created"></PostItem>
     </div>
-  </div>
+  </b-container>
 </template>
 
 <script>

@@ -1,9 +1,9 @@
 <template>
-  <div id="app" class="container">
+  <b-container id="app">
     <Titlebar/>
     <Navbar/>
     <PostList/>
-  </div>
+  </b-container>
 </template>
 
 <script>

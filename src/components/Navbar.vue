@@ -7,7 +7,7 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item-dropdown right>
+          <b-nav-item-dropdown>
             <template slot="button-content">
               <em>Categories</em>
             </template>
