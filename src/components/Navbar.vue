@@ -44,4 +44,7 @@ export default {
 </script>
 
 <style scoped>
+b-navbar {
+  font-family: 'Proza Libre', sans-serif;
+}
 </style>

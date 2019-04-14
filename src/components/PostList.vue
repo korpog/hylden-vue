@@ -1,17 +1,17 @@
 <template>
-  <div>
+  <div class="container">
     <h1>Posts</h1>
 
     <div v-for="post in posts" v-bind:key="post.id">
-      <post :title="post.title" :category="post.category" :text="post.text" 
-      :sources="post.sources" :score="post.score" :created="post.created"></post>
+      <PostItem :title="post.title" :category="post.category" :text="post.text" 
+      :sources="post.sources" :score="post.score" :created="post.created"></PostItem>
     </div>
   </div>
 </template>
 
 <script>
 import { APIService } from "../APIService";
-import Post from "./Post.vue";
+import PostItem from "./PostItem.vue";
 
 const apiService = new APIService();
 
@@ -19,7 +19,7 @@ export default {
   name: "PostList",
 
   components: {
-    Post
+    PostItem
   },
 
   data() {
