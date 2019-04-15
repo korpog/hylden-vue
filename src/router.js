@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './components/Home.vue'
 import PostList from './components/PostList.vue'
-import SignUpForm from './components/User/SignUpForm.vue'
+import SignUp from './components/User/SignUp.vue'
 
 Vue.use(Router)
 
@@ -21,7 +21,7 @@ export default new Router({
     {
       path: '/signup',
       name: 'signUp',
-      component: SignUpForm
+      component: SignUp
     },
   ]
 })

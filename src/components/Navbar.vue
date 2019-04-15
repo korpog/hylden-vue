@@ -35,7 +35,7 @@
           </b-nav-form>
 
           <b-nav-item v-if="loggedIn">
-            <SignUp></SignUp>
+            <b-button size="sm" to="signup">Sign Up</b-button>
           </b-nav-item>
           <b-nav-item-dropdown right v-else>
             <template slot="button-content">
@@ -52,7 +52,6 @@
 </template>
 
 <script>
-import SignUp from "./User/SignUp.vue";
 
 export default {
   name: "Navbar",
@@ -60,7 +59,6 @@ export default {
     loggedIn: { type: Boolean, default: true }
   },
   components: {
-    SignUp
   }
 };
 </script>
@@ -69,6 +67,6 @@ export default {
 h1,
 .navbar-brand,
 .navbar-nav a {
-  font-family: 'Open Sans', serif;
+  font-family: 'Lato', sans-serif;
 }
 </style>

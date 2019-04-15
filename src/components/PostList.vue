@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <h1>Posts</h1>
+    <h1 class="mb-2 pb-2">Posts</h1>
 
     <div v-for="post in posts" v-bind:key="post.id">
       <PostItem :title="post.title" :category="post.category" :text="post.text" 
@@ -41,3 +41,13 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  border-bottom: solid 2px black;
+  width: 50%;
+  margin: 0 auto;
+}
+</style>
