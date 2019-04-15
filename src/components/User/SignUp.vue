@@ -3,7 +3,7 @@
     <h1 class="mb-2 pb-2">Sign Up</h1>
     <b-form @submit="onSubmit">
       <b-form-group id="input-group-1" label="Your Name:" label-for="input-1">
-        <b-form-input id="input-1" v-model="form.name" required placeholder="Enter name"></b-form-input>
+        <b-form-input id="input-1" v-model="form.username" required placeholder="Enter name"></b-form-input>
       </b-form-group>
 
       <b-form-group id="input-group-2" label="Email address:" label-for="input-2">
@@ -32,13 +32,16 @@
 </template>
 
 <script>
+import { APIService } from "../../APIService";
+const apiService = new APIService();
+
 export default {
   name: "SignUp",
   data() {
     return {
       form: {
+        username: "",
         email: "",
-        name: "",
         password: ""
       }
     };
@@ -46,7 +49,8 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      alert(JSON.stringify(this.form));
+      console.log(JSON.stringify(this.form));
+      apiService.postUser(JSON.stringify(this.form));
     }
   }
 };

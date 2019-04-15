@@ -31,11 +31,11 @@
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
             <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
-            <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+            <b-button size="sm" class="my-2 my-sm-0 btn" type="submit">Search</b-button>
           </b-nav-form>
 
           <b-nav-item v-if="loggedIn">
-            <b-button size="sm" to="signup">Sign Up</b-button>
+            <b-button size="sm" class="btn" to="signup">Sign Up</b-button>
           </b-nav-item>
           <b-nav-item-dropdown right v-else>
             <template slot="button-content">
@@ -68,5 +68,8 @@ h1,
 .navbar-brand,
 .navbar-nav a {
   font-family: 'Lato', sans-serif;
+}
+.btn {
+  background: darkslategray
 }
 </style>
