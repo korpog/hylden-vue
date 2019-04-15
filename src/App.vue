@@ -2,21 +2,19 @@
   <b-container id="app">
     <Titlebar/>
     <Navbar/>
-    <PostList/>
+    <router-view></router-view>
   </b-container>
 </template>
 
 <script>
 import Titlebar from './components/Titlebar.vue'
 import Navbar from './components/Navbar.vue'
-import PostList from './components/PostList.vue'
 
 export default {
   name: 'app',
   components: {
     Titlebar,
     Navbar,
-    PostList
   }
 }
 </script>

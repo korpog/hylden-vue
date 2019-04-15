@@ -1,15 +1,26 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="dark" variant="dark">
-      <b-navbar-brand href="#">HYLDEN</b-navbar-brand>
+      <b-navbar-brand tag="h1" class="mb-0">Hylden</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
+
+          <router-link to="/home">
+            <b-nav-item to="home">Home</b-nav-item>
+          </router-link>
+
+          <router-link to="/posts">
+            <b-nav-item to="posts">All posts</b-nav-item>
+          </router-link>
+
+        </b-navbar-nav>
+        <b-navbar-nav>
           <b-nav-item-dropdown>
             <template slot="button-content">
-              <em>Categories</em>
+              Categories
             </template>
             <b-dropdown-item href="#">Biology</b-dropdown-item>
             <b-dropdown-item href="#">History</b-dropdown-item>
@@ -55,7 +66,9 @@ export default {
 </script>
 
 <style scoped>
-b-navbar {
-  font-family: "Proza Libre", sans-serif;
+h1,
+.navbar-brand,
+.navbar-nav a {
+  font-family: 'Open Sans', serif;
 }
 </style>
