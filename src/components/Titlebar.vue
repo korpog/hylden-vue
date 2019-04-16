@@ -1,7 +1,7 @@
 <template>
   <b-container class="title">
     <div class="row justify-content-center">
-      <img src="../assets/hylden.png" alt="Hylden logo">
+      <img src="../static/hylden.png" alt="Hylden logo">
     </div>
     <div class="row justify-content-center py-1" id="about">Explore fascinating facts about life, people and the universe </div>
   </b-container>

@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <h1 class="mb-2 pb-2">Posts</h1>
+    <h1 class="mb-1 pb-1">Posts</h1>
 
     <div v-for="post in posts" v-bind:key="post.id">
       <PostItem :title="post.title" :category="post.category" :text="post.text" 

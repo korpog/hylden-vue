@@ -1,5 +1,5 @@
 <template>
-  <b-container id="app">
+  <b-container id="app" class="mh-100">
     <Titlebar/>
     <Navbar/>
     <router-view></router-view>
@@ -22,6 +22,10 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @import url('https://fonts.googleapis.com/css?family=Lato');
+html, body {
+  background: linear-gradient(to bottom, #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%);
+  height: 100vh;
+}
 #app {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;

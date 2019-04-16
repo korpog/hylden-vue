@@ -8,8 +8,8 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
 
-          <router-link to="/home">
-            <b-nav-item to="home">Home</b-nav-item>
+          <router-link to="/">
+            <b-nav-item to="/">Home</b-nav-item>
           </router-link>
 
           <router-link to="/posts">
