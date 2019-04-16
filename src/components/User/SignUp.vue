@@ -49,8 +49,7 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      console.log(JSON.stringify(this.form));
-      apiService.postUser(JSON.stringify(this.form));
+      apiService.postUser(this.form);
     }
   }
 };

@@ -9,7 +9,7 @@
         impregnate his female partner even with his head bitten off?</h5></b-col>
     </b-row>
     <b-row class="justify-content-center my-3">
-      <b-col sm="6" class="my-auto"><h5>Have you heard of Stanivlas Petrov? He single-handedly averted a nuclear crisis
+      <b-col sm="6" class="my-auto"><h5>Have you heard of Stanislav Petrov? He single-handedly averted a nuclear crisis
         during the height of the Cold War in 1983.</h5></b-col>
       <b-col sm="6"><img src="../static/icbm.jpg" class="img-fluid item-img"></b-col>
     </b-row>

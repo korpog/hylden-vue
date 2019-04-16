@@ -19,19 +19,15 @@ getPost(pk) {
     return axios.get(url)
     .then(response => response.data)
     .catch(function (error) {
-        console.log(error);
+        alert(error);
       });
 }
 
 
-postUser(username, email, password) {
+postUser(data) {
     const url = `${API_URL}/user/create`;
-    axios.post(url, {
-        username: username,
-        email: email,
-        password: password,
-    }).then(function (response) {
-        alert(response);
+    axios.post(url, data).then(function (response) {
+        alert(`User ${response.data["username"]} was successfully created`);
       }).catch(function (error) {
         alert(error);
       });
