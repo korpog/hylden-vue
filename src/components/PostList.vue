@@ -3,8 +3,8 @@
     <h1 class="mb-1 pb-1">Posts</h1>
 
     <div v-for="post in posts" v-bind:key="post.id">
-      <PostItem :title="post.title" :category="post.category" :text="post.text" 
-      :sources="post.sources" :score="post.score" :created="post.created"></PostItem>
+      <PostItem :id="post.id" :title="post.title" :category="post.category" :text="post.text" 
+      :source="post.source" :score="post.score" :created="post.created"></PostItem>
     </div>
   </b-container>
 </template>
@@ -46,7 +46,7 @@ export default {
 h1 {
   font-family: 'Lato', sans-serif;
   font-weight: 900;
-  border-bottom: solid 2px black;
+  border-bottom: solid 3px black;
   width: 50%;
   margin: 0 auto;
 }

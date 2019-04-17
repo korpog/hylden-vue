@@ -26,7 +26,7 @@
 h1 {
   font-family: "Lato", sans-serif;
   font-weight: 900;
-  border-bottom: solid 2px black;
+  border-bottom: solid 3px black;
   width: 50%;
   margin: 0 auto;
 }

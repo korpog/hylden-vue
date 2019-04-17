@@ -7,7 +7,7 @@
     <b-row class="justify-content-center text">
       <p>{{ text }}</p>
     </b-row>
-    <b-row class="justify-content-center source">Source: {{ sources }}</b-row>
+    <b-row class="justify-content-center source">Source: {{ source }}</b-row>
     <b-row class="footer">
       <b-col sm="2" class="score">Points: {{ score }}</b-col>
       <b-col sm="2" class="fav">Add to fav</b-col>
@@ -21,10 +21,11 @@ export default {
   name: "PostItem",
   components: {},
   props: {
+    id: Number,
     title: String,
     category: String,
     text: String,
-    sources: String,
+    source: String,
     score: Number,
     created: String
   },
@@ -44,13 +45,14 @@ export default {
   border-bottom: solid 1px black;
 }
 .category {
-  background: lightblue;
+  background: darkslategray;
+  color: white;
 }
 .title {
   background: linear-gradient(to bottom, #ffd65e 0%,#febf04 100%);
 }
 .footer {
-  background: whitesmoke;
+  background: beige;
   border-top: solid 1px black;
   font-size: 0.8em;
 }

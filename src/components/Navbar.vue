@@ -35,15 +35,15 @@
           </b-nav-form>
 
           <b-nav-item v-if="loggedIn">
-            <b-button size="sm" class="btn" to="signup">Sign Up</b-button>
+            <b-button size="sm" class="btn mr-2" to="signup">Sign Up</b-button>
+            <b-button size="sm" class="btn" to="login">Log In</b-button>
           </b-nav-item>
           <b-nav-item-dropdown right v-else>
             <template slot="button-content">
               <em>User</em>
             </template>
             <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Sign In</b-dropdown-item>
-            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+            <b-dropdown-item href="#">Logout</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
