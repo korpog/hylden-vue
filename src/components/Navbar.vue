@@ -7,24 +7,16 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
+          <b-nav-item to="/">Home</b-nav-item>
 
-          <router-link to="/">
-            <b-nav-item to="/">Home</b-nav-item>
-          </router-link>
-
-          <router-link to="/posts">
-            <b-nav-item to="posts">All posts</b-nav-item>
-          </router-link>
-
+          <b-nav-item :to="{ name: 'posts', params: { category: ' ' }}">All posts</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav>
           <b-nav-item-dropdown>
-            <template slot="button-content">
-              Categories
-            </template>
-            <b-dropdown-item href="#">Biology</b-dropdown-item>
-            <b-dropdown-item href="#">History</b-dropdown-item>
-            <b-dropdown-item href="#">Astronomy</b-dropdown-item>
+            <template slot="button-content">Categories</template>
+            <b-dropdown-item :to="{ name: 'posts', params: { category: 'biology' }}">Biology</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'posts', params: { category: 'history' }}">History</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'posts', params: { category: 'astronomy' }}">Astronomy</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
 
@@ -52,14 +44,12 @@
 </template>
 
 <script>
-
 export default {
   name: "Navbar",
   props: {
     loggedIn: { type: Boolean, default: true }
   },
-  components: {
-  }
+  components: {}
 };
 </script>
 
@@ -67,9 +57,9 @@ export default {
 h1,
 .navbar-brand,
 .navbar-nav a {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 .btn {
-  background: darkslategray
+  background: darkslategray;
 }
 </style>

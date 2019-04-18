@@ -4,8 +4,8 @@ export class APIService {
 
   constructor() {}
 
-  getPosts() {
-    const url = `${API_URL}/posts/`;
+  getPosts(query) {
+    const url = `${API_URL}/posts/${query}`;
     return axios.get(url)
       .then(response => response.data)
       .catch(function (error) {
@@ -35,7 +35,7 @@ export class APIService {
   login(data) {
     const url = `${API_URL}-token-auth/`;
     axios.post(url, data).then(function (response) {
-      alert(`User ${response.data["username"]} was successfully created`);
+      alert(`Token ${response.data["token"]}`);
     }).catch(function (error) {
       alert(error);
     });

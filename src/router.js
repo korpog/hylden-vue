@@ -9,17 +9,16 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'home',
       component: Home
     },
-    {
-      path: '/posts',
+     {
+      path: '/posts/:category',
       name: 'posts',
       component: PostList
-    },    
+    },
     {
       path: '/signup',
       name: 'signup',

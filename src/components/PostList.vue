@@ -24,20 +24,23 @@ export default {
 
   data() {
     return {
-      posts: []
+      posts: [],
+      query: '',
     };
   },
 
   methods: {
-    getPosts() {
-      apiService.getPosts().then(data => {
+    getPosts(query) {
+      apiService.getPosts(query).then(data => {
         this.posts = data.results;
       });
     }
   },
 
   mounted() {
-    this.getPosts();
+    console.log(this.$route.params.category);
+    this.query = this.$route.params.category;
+    this.getPosts(this.query);
   }
 };
 </script>
