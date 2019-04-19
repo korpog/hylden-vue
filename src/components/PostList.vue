@@ -38,8 +38,11 @@ export default {
   },
 
   mounted() {
-    console.log(this.$route.params.category);
+    if (typeof this.$route.params.category == "undefined") {
+      this.query = "";
+    } else {
     this.query = this.$route.params.category;
+    }
     this.getPosts(this.query);
   }
 };

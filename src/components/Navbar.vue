@@ -9,7 +9,7 @@
         <b-navbar-nav>
           <b-nav-item to="/">Home</b-nav-item>
 
-          <b-nav-item :to="{ name: 'posts', params: { category: ' ' }}">All posts</b-nav-item>
+          <b-nav-item :to="{ name: 'posts', params: { category: 'all' }}">All posts</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav>
           <b-nav-item-dropdown>

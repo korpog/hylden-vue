@@ -14,7 +14,7 @@ export default new Router({
       name: 'home',
       component: Home
     },
-     {
+    {
       path: '/posts/:category',
       name: 'posts',
       component: PostList
