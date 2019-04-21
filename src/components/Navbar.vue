@@ -9,7 +9,7 @@
         <b-navbar-nav>
           <b-nav-item to="/">Home</b-nav-item>
 
-          <b-nav-item :to="{ name: 'posts', params: { category: 'all' }}">All posts</b-nav-item>
+          <b-nav-item :to="{ name: 'posts', params: { category: 'all' }}">Posts</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav>
           <b-nav-item-dropdown>
@@ -22,7 +22,7 @@
 
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
-            <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
+            <b-form-input size="sm" class="mr-sm-2" placeholder="Search" v-model="searchQuery"></b-form-input>
             <b-button size="sm" class="my-2 my-sm-0 btn" type="submit">Search</b-button>
           </b-nav-form>
 
@@ -48,6 +48,11 @@ export default {
   name: "Navbar",
   props: {
     loggedIn: { type: Boolean, default: true }
+  },
+  data() {
+    return {
+      searchQuery: ""
+    };
   },
   components: {}
 };

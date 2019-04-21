@@ -1,17 +1,22 @@
 <template>
-  <b-container class="post-item m-2">
-    <b-row class="header">
-      <b-col sm="2" class="text-center category">{{ category }}</b-col>
-      <b-col sm="10" class="text-center title">{{ title }}</b-col>
+  <b-container class="post-item m-2 w-75 mx-auto">
+    <b-row
+      class="header"
+      @mouseover="hover=true"
+      @mouseleave="hover=false"
+      :class="{ active: hover }"
+    >
+      <b-col md="2" class="text-center category">{{ category }}</b-col>
+      <b-col md="10" class="text-center title">{{ title }}</b-col>
     </b-row>
     <b-row class="justify-content-center text">
       <p>{{ text }}</p>
     </b-row>
     <b-row class="justify-content-center source">Source: {{ source }}</b-row>
     <b-row class="footer">
-      <b-col sm="2" class="score">Points: {{ score }}</b-col>
-      <b-col sm="2" class="fav">Add to fav</b-col>
-      <b-col sm="6" offset-sm="2" class="created">{{ created }}</b-col>
+      <b-col md="2" class="score">Points: {{ score }}</b-col>
+      <b-col md="2" class="fav">Add to fav</b-col>
+      <b-col md="6" offset-md="2" class="created">{{ created }}</b-col>
     </b-row>
   </b-container>
 </template>
@@ -29,6 +34,11 @@ export default {
     score: Number,
     created: String
   },
+  data() {
+    return {
+      hover: false
+    };
+  },
   methods: {},
 
   mounted() {}
@@ -36,6 +46,9 @@ export default {
 </script>
 
 <style scoped>
+.active {
+  color: crimson;
+}
 .post-item {
   border: 2px solid black;
 }
@@ -49,7 +62,7 @@ export default {
   color: white;
 }
 .title {
-  background: linear-gradient(to bottom, #ffd65e 0%,#febf04 100%);
+  background: linear-gradient(to bottom, #ffd65e 0%, #febf04 100%);
 }
 .footer {
   background: beige;
