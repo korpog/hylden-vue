@@ -1,13 +1,20 @@
 <template>
   <b-container class="post-item m-2 w-75 mx-auto">
-    <b-row
-      class="header"
-      @mouseover="hover=true"
-      @mouseleave="hover=false"
-      :class="{ active: hover }"
-    >
-      <b-col md="2" class="text-center category">{{ category }}</b-col>
-      <b-col md="10" class="text-center title">{{ title }}</b-col>
+    <b-row class="header">
+      <b-col md="2" class="text-center category">
+        <p class="my-auto py-1">{{ category }}</p>
+      </b-col>
+      <b-col
+        md="10"
+        class="text-center title"
+        @mouseover="hover=true"
+        @mouseleave="hover=false"
+        :class="{ active: hover }"
+      >
+        <p class="my-auto py-1">
+          <b-link id="title" :to="{ name: 'post', params: { slug: slug }}">{{ title }}</b-link>
+        </p>
+      </b-col>
     </b-row>
     <b-row class="justify-content-center text">
       <p>{{ text }}</p>
@@ -22,12 +29,17 @@
 </template>
 
 <script>
+import { APIService } from "../../APIService";
+
+const apiService = new APIService();
+
 export default {
   name: "PostItem",
   components: {},
   props: {
     id: Number,
     title: String,
+    slug: String,
     category: String,
     text: String,
     source: String,
@@ -38,15 +50,17 @@ export default {
     return {
       hover: false
     };
-  },
-  methods: {},
-  mounted() {}
+  }
 };
 </script>
 
 <style scoped>
+#title {
+  color: black;
+  text-decoration: none;
+}
 .active {
-  color: crimson;
+  font-weight: 800;
 }
 .post-item {
   border: 2px solid black;

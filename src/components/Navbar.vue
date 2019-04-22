@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <b-navbar toggleable="lg" type="dark" variant="dark">
+  <div class="justify-content-center">
+    <b-navbar toggleable="lg" type="dark" variant="dark" class="w-80">
       <b-navbar-brand tag="h1" class="mb-0">Hylden</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>

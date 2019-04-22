@@ -3,14 +3,22 @@
     <h1 class="mb-1 pb-1">Posts</h1>
 
     <div v-for="post in posts" v-bind:key="post.id">
-      <PostItem :id="post.id" :title="post.title" :category="post.category" :text="post.text" 
-      :source="post.source" :score="post.score" :created="post.created"></PostItem>
+      <PostItem
+        :id="post.id"
+        :title="post.title"
+        :slug="post.slug"
+        :category="post.category"
+        :text="post.text"
+        :source="post.source"
+        :score="post.score"
+        :created="post.created"
+      ></PostItem>
     </div>
   </b-container>
 </template>
 
 <script>
-import { APIService } from "../APIService";
+import { APIService } from "../../APIService";
 import PostItem from "./PostItem.vue";
 
 const apiService = new APIService();
@@ -24,8 +32,7 @@ export default {
 
   data() {
     return {
-      posts: [],
-      query: '',
+      posts: []
     };
   },
 
@@ -37,27 +44,22 @@ export default {
     }
   },
 
-watch:{
-    '$route' (){
-        this.getPosts(this.$route.params.category);
+  watch: {
+    $route() {
+      this.getPosts(this.$route.params.category);
     }
-},
+  },
 
   mounted() {
-    if (typeof this.$route.params.category == "undefined") {
-      this.query = "";
-    } else {
-    this.query = this.$route.params.category;
-    }
-    this.getPosts(this.query);
+    this.getPosts(this.$route.params.category);
   }
 };
 </script>
 
 <style scoped>
 h1 {
-  font-family: 'Lato', sans-serif;
-  font-weight: 900;
+  font-family: "Lato", sans-serif;
+  font-weight: 800;
   border-bottom: solid 3px black;
   width: 50%;
   margin: 0 auto;

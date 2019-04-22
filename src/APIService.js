@@ -13,12 +13,12 @@ export class APIService {
       });
   }
 
-  getPost(pk) {
-    const url = `${API_URL}/posts/${pk}`;
+  getPostBySlug(slug) {
+    const url = `${API_URL}/post/${slug}`;
     return axios.get(url)
       .then(response => response.data)
       .catch(function (error) {
-        alert(error);
+        console.log(error);
       });
   }
 
@@ -28,7 +28,7 @@ export class APIService {
     axios.post(url, data).then(function (response) {
       alert(`User ${response.data["username"]} was successfully created`);
     }).catch(function (error) {
-      alert(error);
+      console.log(error);
     });
   }
 
@@ -37,7 +37,7 @@ export class APIService {
     axios.post(url, data).then(function (response) {
       alert(`Token ${response.data["token"]}`);
     }).catch(function (error) {
-      alert(error);
+      console.log(error);
     });
   }
 
