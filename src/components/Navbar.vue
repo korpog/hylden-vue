@@ -27,8 +27,8 @@
           </b-nav-form>
 
           <b-nav-item v-if="loggedIn">
-            <b-button size="sm" class="btn mr-2" to="signup">Sign Up</b-button>
-            <b-button size="sm" class="btn" to="login">Log In</b-button>
+            <b-button size="sm" class="btn mr-2" to="/signup">Sign Up</b-button>
+            <b-button size="sm" class="btn" to="/login">Log In</b-button>
           </b-nav-item>
           <b-nav-item-dropdown right v-else>
             <template slot="button-content">

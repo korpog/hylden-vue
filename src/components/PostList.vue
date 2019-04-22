@@ -37,6 +37,12 @@ export default {
     }
   },
 
+watch:{
+    '$route' (){
+        this.getPosts(this.$route.params.category);
+    }
+},
+
   mounted() {
     if (typeof this.$route.params.category == "undefined") {
       this.query = "";
