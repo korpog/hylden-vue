@@ -22,8 +22,8 @@
 
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
-            <b-form-input size="sm" class="mr-sm-2" placeholder="Search" v-model="searchQuery"></b-form-input>
-            <b-button size="sm" class="my-2 my-sm-0 btn" type="submit">Search</b-button>
+            <b-form-input size="sm" class="mr-sm-2" placeholder="Search posts by title" v-model="searchQuery"></b-form-input>
+            <b-button size="sm" class="my-2 my-sm-0 btn" @click="searchPosts()">Search</b-button>
           </b-nav-form>
 
           <b-nav-item v-if="loggedIn">
@@ -44,17 +44,27 @@
 </template>
 
 <script>
+import { APIService } from '../APIService' 
+
+const apiService = new APIService();
+
 export default {
   name: "Navbar",
+  components: {},
   props: {
     loggedIn: { type: Boolean, default: true }
   },
   data() {
     return {
-      searchQuery: ""
+      searchQuery: "",
     };
   },
-  components: {}
+  methods: {
+    searchPosts() {
+      const query = `?title__contains=${this.searchQuery}`;
+      this.$router.push({ name: 'posts', params: { category: query } });
+    }
+  }
 };
 </script>
 

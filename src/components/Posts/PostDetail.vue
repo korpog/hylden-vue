@@ -1,5 +1,5 @@
 <template>
-  <b-container>
+  <b-container class="mt-4">
     <PostItem
       :id="itemData.id"
       :title="itemData.title"

@@ -39,7 +39,7 @@ body {
 }
 .trans-enter-active{
   opacity: 0;
-  animation: fadeIn 0.3s ease-in;
+  animation: fadeIn 0.5s ease-in;
 }
 @keyframes fadeIn{
   0%{
