@@ -38,7 +38,12 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      apiService.login(this.form);
+      apiService.login(this.form)
+      .then(response => {
+        console.log(response);
+        localStorage.setItem('token', response);
+      })
+      .catch(error => console.log(error));
     }
   }
 };

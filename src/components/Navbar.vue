@@ -29,6 +29,7 @@
           <b-nav-item v-if="loggedIn">
             <b-button size="sm" class="btn mr-2" to="/signup">Sign Up</b-button>
             <b-button size="sm" class="btn" to="/login">Log In</b-button>
+            <b-button size="sm" class="my-2 ml-2 my-sm-0 btn" @click="logout()">Log Out</b-button>
           </b-nav-item>
           <b-nav-item-dropdown right v-else>
             <template slot="button-content">
@@ -63,6 +64,9 @@ export default {
     searchPosts() {
       const query = `?title__contains=${this.searchQuery}`;
       this.$router.push({ name: 'posts', params: { category: query } });
+    },
+    logout() {
+      localStorage.removeItem('token');
     }
   }
 };

@@ -34,11 +34,12 @@ export class APIService {
 
   login(data) {
     const url = `${API_URL}-token-auth/`;
-    axios.post(url, data).then(function (response) {
-      alert(`Token ${response.data["token"]}`);
-    }).catch(function (error) {
-      console.log(error);
-    });
+    axios.post(url, data)
+      .then(response =>
+        response.data["token"])
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
 }
