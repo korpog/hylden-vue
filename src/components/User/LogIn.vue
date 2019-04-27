@@ -38,12 +38,7 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      apiService.login(this.form)
-      .then(response => {
-        console.log(response);
-        localStorage.setItem('token', response);
-      })
-      .catch(error => console.log(error));
+      apiService.login(this.form);
     }
   }
 };
@@ -51,7 +46,7 @@ export default {
 
 <style scoped>
 h1 {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 900;
   border-bottom: solid 2px black;
   width: 50%;

@@ -55,6 +55,7 @@ export default {
     onSubmit(evt) {
       evt.preventDefault();
       apiService.createUser(this.form);
+      this.$router.push('/login');
     }
   }
 };

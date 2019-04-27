@@ -35,8 +35,12 @@ export class APIService {
   login(data) {
     const url = `${API_URL}-token-auth/`;
     axios.post(url, data)
-      .then(response =>
-        response.data["token"])
+      .then(response => {
+        localStorage.setItem('token', response.data["token"]);
+        localStorage.setItem('username', data["username"]);
+        alert("You have been successfully logged in!")
+        this.$router.push("/");
+      })
       .catch(function (error) {
         console.log(error);
       });
