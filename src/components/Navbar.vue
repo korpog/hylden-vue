@@ -22,7 +22,12 @@
 
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
-            <b-form-input size="sm" class="mr-sm-2" placeholder="Search posts by title" v-model="searchQuery"></b-form-input>
+            <b-form-input
+              size="sm"
+              class="mr-sm-2"
+              placeholder="Search posts by title"
+              v-model="searchQuery"
+            ></b-form-input>
             <b-button size="sm" class="my-2 my-sm-0 btn" @click="searchPosts()">Search</b-button>
           </b-nav-form>
 
@@ -45,7 +50,7 @@
 </template>
 
 <script>
-import { APIService } from '../APIService' 
+import { APIService } from "../APIService";
 
 const apiService = new APIService();
 
@@ -57,16 +62,18 @@ export default {
   },
   data() {
     return {
-      searchQuery: "",
+      searchQuery: ""
     };
   },
   methods: {
     searchPosts() {
       const query = `?title__contains=${this.searchQuery}`;
-      this.$router.push({ name: 'posts', params: { category: query } });
+      this.$router.push({ name: "posts", params: { category: query } });
     },
     logout() {
-      localStorage.removeItem('token');
+      localStorage.removeItem("token");
+      localStorage.removeItem("username");
+      alert("You have been successfully logged out!");
     }
   }
 };

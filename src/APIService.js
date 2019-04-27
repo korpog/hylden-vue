@@ -13,6 +13,14 @@ export class APIService {
       });
   }
 
+  getPostsByUrl(url) {
+    return axios.get(url)
+      .then(response => response.data)
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   getPostBySlug(slug) {
     const url = `${API_URL}/post/${slug}`;
     return axios.get(url)

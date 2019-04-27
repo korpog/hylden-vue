@@ -1,6 +1,13 @@
 <template>
   <b-container>
     <h1 class="mb-1 pb-1">Posts</h1>
+    <b-button size="lg" class="btn mr-3 my-1" @click="prevPage()">
+      <font-awesome-icon icon="angle-left"/>Previous
+    </b-button>
+    <b-button size="lg" class="btn ml-3 my-1" @click="nextPage()">
+      Next
+      <font-awesome-icon icon="angle-right"/>
+    </b-button>
 
     <div v-for="post in posts" v-bind:key="post.id">
       <PostItem
@@ -32,6 +39,8 @@ export default {
 
   data() {
     return {
+      previousUrl: "",
+      nextUrl: "",
       posts: []
     };
   },
@@ -39,6 +48,22 @@ export default {
   methods: {
     getPosts(query) {
       apiService.getPosts(query).then(data => {
+        this.previousUrl = data.previous;
+        this.nextUrl = data.next;
+        this.posts = data.results;
+      });
+    },
+    prevPage() {
+      apiService.getPostsByUrl(this.previousUrl).then(data => {
+        this.previousUrl = data.previous;
+        this.nextUrl = data.next;
+        this.posts = data.results;
+      });
+    },
+    nextPage() {
+      apiService.getPostsByUrl(this.nextUrl).then(data => {
+        this.previousUrl = data.previous;
+        this.nextUrl = data.next;
         this.posts = data.results;
       });
     }
