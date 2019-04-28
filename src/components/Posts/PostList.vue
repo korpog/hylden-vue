@@ -1,10 +1,10 @@
 <template>
   <b-container>
     <h1 class="mb-1 pb-1">Posts</h1>
-    <b-button size="lg" class="btn mr-3 my-1" @click="prevPage()">
+    <b-button size="lg" class="btn mr-3 my-1" v-bind:class="{ active: previousUrl }" @click="prevPage()">
       <font-awesome-icon icon="angle-left"/>Previous
     </b-button>
-    <b-button size="lg" class="btn ml-3 my-1" @click="nextPage()">
+    <b-button size="lg" class="btn ml-3 my-1" v-bind:class="{ active: nextUrl }" @click="nextPage()">
       Next
       <font-awesome-icon icon="angle-right"/>
     </b-button>
@@ -88,5 +88,8 @@ h1 {
   border-bottom: solid 3px black;
   width: 50%;
   margin: 0 auto;
+}
+.active {
+  background: darkslategray !important;
 }
 </style>
