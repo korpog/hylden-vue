@@ -30,6 +30,21 @@ export class APIService {
       });
   }
 
+  createPost(post) {
+    const url = `${API_URL}/posts/`;
+    return axios.post(url, post);
+  }
+
+  updatePost(post) {
+    const url = `${API_URL}/post/${post.id}`;
+    return axios.put(url, post);
+  }
+
+  deletePost(post) {
+    const url = `${API_URL}/post/${post.id}`;
+    return axios.delete(url);
+  }
+
 
   createUser(data) {
     const url = `${API_URL}/user/create`;
