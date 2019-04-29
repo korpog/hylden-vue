@@ -38,7 +38,8 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      apiService.login(this.form);
+      apiService.login(this.form).then(
+        this.$router.push("/"));
     }
   }
 };

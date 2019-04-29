@@ -13,6 +13,9 @@
       >
         <p class="my-auto py-1">
           <b-link id="title" :to="{ name: 'post', params: { slug: slug }}">{{ title }}</b-link>
+          <b-button size="sm" class="mx-1 edit-btn">
+            <font-awesome-icon icon="pen"/>Edit
+          </b-button>
         </p>
       </b-col>
     </b-row>
@@ -20,10 +23,13 @@
       <p>{{ text }}</p>
     </b-row>
     <b-row class="justify-content-center source">Source: {{ source }}</b-row>
-    <b-row class="footer">
-      <b-col md="2" class="score">Points: {{ score }}</b-col>
-      <b-col md="2" class="fav">Add to fav</b-col>
-      <b-col md="6" offset-md="2" class="created">{{ created }}</b-col>
+    <b-row class="footer p-1" align-v="center">
+      <b-col md="4" class="score">
+            Points: {{ score }}
+              <font-awesome-icon icon="plus-square"/>
+      </b-col>
+      <b-col md="4" class="fav">Add to favorites <font-awesome-icon icon="star"/></b-col>
+      <b-col md="4" class="created">{{ created }}</b-col>
     </b-row>
   </b-container>
 </template>
@@ -81,5 +87,11 @@ export default {
   background: beige;
   border-top: solid 1px black;
   font-size: 0.8em;
+}
+.edit-btn {
+  color: crimson;
+  background: transparent;
+  border: none;
+  outline: none;
 }
 </style>
