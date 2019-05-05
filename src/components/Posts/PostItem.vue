@@ -1,5 +1,5 @@
 <template>
-  <b-container class="post-item m-2 w-75 mx-auto">
+  <b-container class="post-item my-3 w-75 mx-auto">
     <b-row class="header">
       <b-col md="2" class="text-center category">
         <p class="my-auto py-1">{{ category }}</p>
@@ -16,19 +16,29 @@
           <b-button size="sm" class="mx-1 edit-btn">
             <font-awesome-icon icon="pen"/>Edit
           </b-button>
+            <b-button title="Delete this post" size="sm" class="mx-1 del-btn">
+            <font-awesome-icon icon="trash"/>
+          </b-button>
         </p>
       </b-col>
     </b-row>
     <b-row class="justify-content-center text">
-      <p>{{ text }}</p>
+      <p class="p-2">{{ text }}</p>
     </b-row>
-    <b-row class="justify-content-center source">Source: {{ source }}</b-row>
+    <b-row class="justify-content-center source mb-2">Source: {{ source }}</b-row>
     <b-row class="footer p-1" align-v="center">
       <b-col md="4" class="score">
-            Points: {{ score }}
-              <font-awesome-icon icon="plus-square"/>
+        <b-button class="btn">
+          Points: {{ score }}
+          <font-awesome-icon icon="plus-square"/>
+        </b-button>
       </b-col>
-      <b-col md="4" class="fav">Add to favorites <font-awesome-icon icon="star"/></b-col>
+      <b-col md="4" class="fav">
+        <b-button class="btn">
+          Add to favorites
+          <font-awesome-icon icon="star"/>
+        </b-button>
+      </b-col>
       <b-col md="4" class="created">{{ created }}</b-col>
     </b-row>
   </b-container>
@@ -84,14 +94,22 @@ export default {
   background: linear-gradient(to bottom, #ffd65e 0%, #febf04 100%);
 }
 .footer {
-  background: beige;
+  background: linear-gradient(to bottom, #eaefb5 0%,#e1e9a0 100%);
   border-top: solid 1px black;
-  font-size: 0.8em;
+}
+.btn {
+  color: black;
+  background: transparent;
+  border: none;
+  outline: none;
 }
 .edit-btn {
   color: crimson;
   background: transparent;
   border: none;
   outline: none;
+}
+.del-btn {
+  float: right;
 }
 </style>

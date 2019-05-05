@@ -8,7 +8,7 @@
       @click="prevPage()"
       :disabled="!previousUrl"
     >
-      <font-awesome-icon icon="angle-left"/>Previous
+      <font-awesome-icon icon="angle-left"/> Previous
     </b-button>
     <b-button
       size="lg"
