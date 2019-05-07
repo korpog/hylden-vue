@@ -13,10 +13,10 @@
       >
         <p class="my-auto py-1">
           <b-link id="title" :to="{ name: 'post', params: { slug: slug }}">{{ title }}</b-link>
-          <b-button size="sm" class="mx-1 edit-btn">
+          <b-button size="sm" class="mx-1 edit-btn" @click="modalShow = !modalShow">
             <font-awesome-icon icon="pen"/>Edit
           </b-button>
-            <b-button title="Delete this post" size="sm" class="mx-1 del-btn" @click="deletePost()">
+          <b-button title="Delete this post" size="sm" class="mx-1 del-btn" @click="deletePost()">
             <font-awesome-icon icon="trash"/>
           </b-button>
         </p>
@@ -41,17 +41,24 @@
       </b-col>
       <b-col md="4" class="created">{{ created }}</b-col>
     </b-row>
+
+    <b-modal v-model="modalShow" size="xl" title="Edit Post" hide-footer>
+      <PostEditForm></PostEditForm>
+    </b-modal>
   </b-container>
 </template>
 
 <script>
 import { APIService } from "../../APIService";
+import PostEditForm from "./PostEditForm.vue"
 
 const apiService = new APIService();
 
 export default {
   name: "PostItem",
-  components: {},
+  components: {
+    PostEditForm,
+  },
   props: {
     id: Number,
     title: String,
@@ -64,22 +71,17 @@ export default {
   },
   data() {
     return {
-      hover: false
+      hover: false,
+      modalShow: false
     };
   },
   methods: {
     deletePost() {
       apiService.deletePost(this.slug);
     },
-    editPost() {
-
-    },
-    addPoint() {
-
-    },
-    addToFavorites() {
-
-    },
+    editPost() {},
+    addPoint() {},
+    addToFavorites() {}
   }
 };
 </script>
@@ -108,7 +110,7 @@ export default {
   background: linear-gradient(to bottom, #ffd65e 0%, #febf04 100%);
 }
 .footer {
-  background: linear-gradient(to bottom, #eaefb5 0%,#e1e9a0 100%);
+  background: linear-gradient(to bottom, #eaefb5 0%, #e1e9a0 100%);
   border-top: solid 1px black;
 }
 .btn {
@@ -117,13 +119,14 @@ export default {
   border: none;
   outline: none;
 }
+.del-btn {
+  float: right;
+}
 .edit-btn {
   color: crimson;
   background: transparent;
   border: none;
   outline: none;
-}
-.del-btn {
   float: right;
 }
 </style>
