@@ -19,6 +19,7 @@
             <b-dropdown-item :to="{ name: 'posts', params: { category: 'astronomy' }}">Astronomy</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
+        <b-nav-item to="/post-create">Create post</b-nav-item>
 
         <b-navbar-nav class="ml-auto">
           <b-nav-form>

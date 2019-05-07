@@ -45,6 +45,15 @@ export class APIService {
     return axios.delete(url, { headers: { Authorization: `Token ${localStorage.getItem('token')}` }});
   }
 
+  getCategories() {
+    const url = `${API_URL}/categories/`;
+    return axios.get(url)
+      .then(response => response.data)
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
 
   createUser(data) {
     const url = `${API_URL}/user/create`;

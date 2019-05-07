@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './components/Home.vue'
 import PostDetail from './components/Posts/PostDetail.vue'
 import PostList from './components/Posts/PostList.vue'
+import PostCreate from './components/Posts/PostCreate.vue'
 import SignUp from './components/User/SignUp.vue'
 import LogIn from './components/User/LogIn.vue'
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/post/:slug',
       name: 'post',
       component: PostDetail,
+    },
+    {
+      path: '/post-create',
+      name: 'post-create',
+      component: PostCreate,
     },
     {
       path: '/signup',
