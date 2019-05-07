@@ -36,13 +36,13 @@ export class APIService {
   }
 
   updatePost(post) {
-    const url = `${API_URL}/post/${post.id}`;
+    const url = `${API_URL}/post/${post.slug}`;
     return axios.put(url, post);
   }
 
-  deletePost(post) {
-    const url = `${API_URL}/post/${post.id}`;
-    return axios.delete(url);
+  deletePost(slug) {
+    const url = `${API_URL}/post/${slug}`;
+    return axios.delete(url, { headers: { Authorization: `Token ${localStorage.getItem('token')}` }});
   }
 
 

@@ -16,7 +16,7 @@
           <b-button size="sm" class="mx-1 edit-btn">
             <font-awesome-icon icon="pen"/>Edit
           </b-button>
-            <b-button title="Delete this post" size="sm" class="mx-1 del-btn">
+            <b-button title="Delete this post" size="sm" class="mx-1 del-btn" @click="deletePost()">
             <font-awesome-icon icon="trash"/>
           </b-button>
         </p>
@@ -66,6 +66,20 @@ export default {
     return {
       hover: false
     };
+  },
+  methods: {
+    deletePost() {
+      apiService.deletePost(this.slug);
+    },
+    editPost() {
+
+    },
+    addPoint() {
+
+    },
+    addToFavorites() {
+
+    },
   }
 };
 </script>
