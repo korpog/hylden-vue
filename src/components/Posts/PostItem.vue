@@ -77,9 +77,14 @@ export default {
   },
   methods: {
     deletePost() {
-      apiService.deletePost(this.slug);
+      apiService.deletePost(this.slug)
+      .then(response => {
+        if(response.status === 204) {
+          alert("Post deleted!");
+          this.$router.go();
+        }
+      });
     },
-    editPost() {},
     addPoint() {},
     addToFavorites() {}
   }

@@ -43,7 +43,14 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      apiService.updatePost(this.form);
+      apiService
+        .updatePost(this.form)
+        .then(result => {
+          if (result.status === 200) {
+            alert("Successfully updated!");
+          }
+        })
+        .catch(error => console.log(error));
     }
   }
 };

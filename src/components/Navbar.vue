@@ -18,8 +18,8 @@
             <b-dropdown-item :to="{ name: 'posts', params: { category: 'history' }}">History</b-dropdown-item>
             <b-dropdown-item :to="{ name: 'posts', params: { category: 'astronomy' }}">Astronomy</b-dropdown-item>
           </b-nav-item-dropdown>
+          <b-nav-item to="/post-create">Create post</b-nav-item>
         </b-navbar-nav>
-        <b-nav-item to="/post-create">Create post</b-nav-item>
 
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
