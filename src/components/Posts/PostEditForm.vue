@@ -31,6 +31,10 @@ const apiService = new APIService();
 
 export default {
   name: "PostEditForm",
+  props: {
+    id: Number,
+    slug: String
+  },
   data() {
     return {
       form: {
@@ -44,7 +48,7 @@ export default {
     onSubmit(evt) {
       evt.preventDefault();
       apiService
-        .updatePost(this.form)
+        .updatePost(this.form, this.slug)
         .then(result => {
           if (result.status === 200) {
             alert("Successfully updated!");

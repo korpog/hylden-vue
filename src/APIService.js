@@ -33,9 +33,9 @@ export class APIService {
     });
   }
 
-  updatePost(post) {
-    const url = `${API_URL}/post/${post.slug}`;
-    return axios.put(url, post, {
+  updatePost(post, slug) {
+    const url = `${API_URL}/post/${slug}/`;
+    return axios.patch(url, post, {
       headers: {
         Authorization: `Token ${localStorage.getItem('token')}`
       }

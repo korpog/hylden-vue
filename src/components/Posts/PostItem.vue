@@ -43,7 +43,7 @@
     </b-row>
 
     <b-modal v-model="modalShow" size="xl" title="Edit Post" hide-footer>
-      <PostEditForm></PostEditForm>
+      <PostEditForm :id="id" :slug="slug"></PostEditForm>
     </b-modal>
   </b-container>
 </template>

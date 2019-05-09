@@ -24,7 +24,6 @@ export default {
   components: {
     PostItem
   },
-
   data() {
     return {
         itemData: [],
