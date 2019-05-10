@@ -6,6 +6,16 @@
         <b-form-input id="input-1" v-model="form.username" required placeholder="Enter name"></b-form-input>
       </b-form-group>
 
+      <b-form-group id="input-group-2" label="Your email:" label-for="input-2">
+        <b-form-input
+          id="input-2"
+          v-model="form.email"
+          type="email"
+          required
+          placeholder="Enter email"
+        ></b-form-input>
+      </b-form-group>
+
       <b-form-group id="input-group-3" label="Your Password:" label-for="input-3">
         <b-form-input
           id="input-3"
@@ -31,6 +41,7 @@ export default {
     return {
       form: {
         username: "",
+        email: "",
         password: ""
       }
     };
@@ -38,8 +49,7 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      apiService.login(this.form).then(
-        this.$router.push("/"));
+      apiService.login(this.form).then(this.$router.push("/"));
     }
   }
 };

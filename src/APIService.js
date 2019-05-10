@@ -1,4 +1,5 @@
 import axios from 'axios';
+const URL = 'http://localhost:8000';
 const API_URL = 'http://localhost:8000/api';
 export class APIService {
 
@@ -68,7 +69,7 @@ export class APIService {
   }
 
   login(data) {
-    const url = `${API_URL}-token-auth/`;
+    const url = `${URL}/rest-auth/login/`;
     return axios.post(url, data)
       .then(response => {
         localStorage.setItem('token', response.data["token"]);
