@@ -72,9 +72,7 @@ export default {
       this.$router.push({ name: "posts", params: { category: query } });
     },
     logout() {
-      localStorage.removeItem("token");
-      localStorage.removeItem("username");
-      alert("You have been successfully logged out!");
+      apiService.logout();
     }
   }
 };

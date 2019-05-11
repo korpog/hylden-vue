@@ -72,11 +72,32 @@ export class APIService {
     const url = `${URL}/rest-auth/login/`;
     return axios.post(url, data)
       .then(response => {
-        localStorage.setItem('token', response.data["token"]);
+        localStorage.setItem('token', response.data["key"]);
         localStorage.setItem('username', data["username"]);
         alert("You have been successfully logged in!")
       })
       .catch(error => console.log(error));
+  }
+
+  logout() {
+    const url = `${URL}/rest-auth/logout/`;
+    return axios.post(url)
+      .then(() => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("username");
+        alert("You have been logged out!");
+      })
+      .catch(error => console.log(error));
+  }
+
+  resetPassword(email) {
+    const url = `${URL}/rest-auth/password/reset/`;
+    return axios.post(url, email)
+  }
+
+  changePassword(data) {
+    const url = `${URL}/rest-auth/password/change/`;
+    return axios.post(url, data)
   }
 
 }
