@@ -32,17 +32,16 @@
             <b-button size="sm" class="my-2 my-sm-0 btn" @click="searchPosts()">Search</b-button>
           </b-nav-form>
 
-          <b-nav-item v-if="loggedIn">
+          <b-nav-item v-if="!authenticated">
             <b-button size="sm" class="btn mr-2" to="/signup">Sign Up</b-button>
             <b-button size="sm" class="btn" to="/login">Log In</b-button>
-            <b-button size="sm" class="my-2 ml-2 my-sm-0 btn" @click="logout()">Log Out</b-button>
           </b-nav-item>
-          <b-nav-item-dropdown right v-else>
+          <b-nav-item-dropdown class="ml-2" right v-else>
             <template slot="button-content">
-              <em>User</em>
+              <b id="username">{{authUser}}</b>
             </template>
             <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Logout</b-dropdown-item>
+            <b-dropdown-item @click="logout()">Logout</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -59,7 +58,8 @@ export default {
   name: "Navbar",
   components: {},
   props: {
-    loggedIn: { type: Boolean, default: true }
+    authenticated: { type: Boolean, default: false },
+    authUser: {type: String, default: ''},
   },
   data() {
     return {
@@ -72,7 +72,9 @@ export default {
       this.$router.push({ name: "posts", params: { category: query } });
     },
     logout() {
-      apiService.logout();
+      apiService.logout().then(() => {
+        this.$emit("handleLogout");
+      });
     }
   }
 };
@@ -86,5 +88,8 @@ h1,
 }
 .btn {
   background: darkslategray;
+}
+#username {
+  color: gold;
 }
 </style>

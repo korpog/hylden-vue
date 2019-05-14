@@ -49,7 +49,11 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      apiService.login(this.form).then(this.$router.push("/"));
+      apiService.login(this.form)
+      .then(() => {
+        this.$emit("handleLogin");
+        this.$router.push("/");
+      });
     }
   }
 };

@@ -1,9 +1,9 @@
 <template>
   <b-container id="app" class="mw-100">
     <Titlebar/>
-    <Navbar/>
+    <Navbar @handleLogout="handleLogout" :authenticated="authenticated" :authUser="authUser"/>
     <transition name="trans">
-      <router-view></router-view>
+      <router-view @handleLogin="handleLogin"></router-view>
     </transition>
   </b-container>
 </template>
@@ -17,6 +17,22 @@ export default {
   components: {
     Titlebar,
     Navbar
+  },
+  data() {
+    return {
+      authenticated: false,
+      authUser: '',
+    };
+  },
+  methods: {
+    handleLogin: function() {
+      this.authenticated = true;
+      this.authUser = localStorage.getItem('username');
+    },
+    handleLogout: function() {
+      this.authenticated = false;
+      this.authUser = '';
+    }
   }
 };
 </script>
@@ -37,18 +53,18 @@ html,
 body {
   background: rgb(199, 220, 226, 0.4);
 }
-.trans-enter-active{
+.trans-enter-active {
   opacity: 0;
   animation: fadeIn 0.5s ease-in;
 }
-@keyframes fadeIn{
-  0%{
-    opacity: 0.0;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-  50%{
+  50% {
     opacity: 0.5;
   }
-  100%{
+  100% {
     opacity: 1;
   }
 }
