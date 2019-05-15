@@ -40,7 +40,7 @@
             <template slot="button-content">
               <b id="username">{{authUser}}</b>
             </template>
-            <b-dropdown-item href="#">Profile</b-dropdown-item>
+            <b-dropdown-item to="/user">Profile</b-dropdown-item>
             <b-dropdown-item @click="logout()">Logout</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>

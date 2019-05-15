@@ -6,6 +6,7 @@ import PostList from './components/Posts/PostList.vue'
 import PostCreate from './components/Posts/PostCreate.vue'
 import SignUp from './components/User/SignUp.vue'
 import LogIn from './components/User/LogIn.vue'
+import UserPage from './components/User/UserPage.vue'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: LogIn
+    },
+    {
+      path: '/user',
+      name: 'user',
+      component: UserPage
     },
   ]
 })

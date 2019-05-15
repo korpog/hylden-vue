@@ -92,12 +92,12 @@ export class APIService {
 
   resetPassword(email) {
     const url = `${URL}/rest-auth/password/reset/`;
-    return axios.post(url, email)
+    return axios.post(url, email).catch(e => console.log(e));
   }
 
   changePassword(data) {
     const url = `${URL}/rest-auth/password/change/`;
-    return axios.post(url, data)
+    return axios.post(url, data);
   }
 
 }

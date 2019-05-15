@@ -13,12 +13,14 @@
       >
         <p class="my-auto py-1">
           <b-link id="title" :to="{ name: 'post', params: { slug: slug }}">{{ title }}</b-link>
+          <span>
           <b-button size="sm" class="mx-1 edit-btn" @click="modalShow = !modalShow">
             <font-awesome-icon icon="pen"/>Edit
           </b-button>
           <b-button title="Delete this post" size="sm" class="mx-1 del-btn" @click="deletePost()">
             <font-awesome-icon icon="trash"/>
           </b-button>
+          </span>
         </p>
       </b-col>
     </b-row>
