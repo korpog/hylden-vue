@@ -87,8 +87,12 @@ export default {
         }
       });
     },
-    addPoint() {},
-    addToFavorites() {}
+    addPoint() {
+
+    },
+    addToFavorites() {
+      
+    }
   }
 };
 </script>
