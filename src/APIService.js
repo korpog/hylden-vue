@@ -100,8 +100,13 @@ export class APIService {
     return axios.post(url, data);
   }
 
-  saveSubs(user, categories) {
-    const url = `${API_URL}/user/favorites/${user}`;
+  saveSubs(subs) {
+    const url = `${API_URL}/user/favorites/`;
+    return axios.patch(url, subs, {
+      headers: {
+        Authorization: `Token ${localStorage.getItem('token')}`
+      }
+    });
   }
 
   addPoint(slug) {

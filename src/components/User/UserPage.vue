@@ -17,8 +17,17 @@
         <h3>Subscriptions</h3>
         <div>
           <b-form class="w-75 mx-auto pb-2" @submit="saveSubs">
-            <b-form-group id="input-subs" label="Receive weekly email with new posts from these categories:" label-for="input-subs">
-              <b-form-select v-model="selectedCategories" :options="categories" multiple :select-size="4"></b-form-select>
+            <b-form-group
+              id="input-subs"
+              label="Receive weekly email with new posts from these categories:"
+              label-for="input-subs"
+            >
+              <b-form-select
+                v-model="selectedCategories"
+                :options="categories"
+                multiple
+                :select-size="4"
+              ></b-form-select>
             </b-form-group>
             <b-button type="submit" variant="primary">Save changes</b-button>
           </b-form>
@@ -35,6 +44,10 @@ const apiService = new APIService();
 export default {
   name: "UserPage",
   components: {},
+  props: {
+    authenticated: { type: Boolean, default: false },
+    authUser: { type: String, default: "" }
+  },
   data() {
     return {
       email: "",
@@ -53,7 +66,7 @@ export default {
       });
     },
     saveSubs() {
-      apiService.saveSubs("lizergus" , this.selectedCategories);
+      apiService.saveSubs("lizergus", this.selectedCategories);
     }
   },
   mounted() {
