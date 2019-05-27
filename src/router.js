@@ -36,7 +36,6 @@ export default new Router({
       path: '/signup',
       name: 'signup',
       component: SignUp,
-      props: true,
     },
     {
       path: '/login',
@@ -44,9 +43,10 @@ export default new Router({
       component: LogIn
     },
     {
-      path: '/user',
+      path: '/user/:username',
       name: 'user',
-      component: UserPage
+      component: UserPage,
+      props: true,
     },
   ]
 })

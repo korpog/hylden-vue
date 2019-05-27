@@ -2,7 +2,7 @@
   <b-container>
     <b-row class="my-3 text-center">
       <b-col>
-        <h2>Hello, username!</h2>
+        <h2>Hello, {{username}}!</h2>
         <hr>
         <div>
           <b-form class="w-75 mx-auto pb-2" @submit="resetPassword">
@@ -45,8 +45,7 @@ export default {
   name: "UserPage",
   components: {},
   props: {
-    authenticated: { type: Boolean, default: false },
-    authUser: { type: String, default: "" }
+    username: { type: String, default: "" }
   },
   data() {
     return {
