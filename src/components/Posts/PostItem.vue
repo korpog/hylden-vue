@@ -13,7 +13,7 @@
       >
         <p class="my-auto py-1">
           <b-link id="title" :to="{ name: 'post', params: { slug: slug }}">{{ title }}</b-link>
-          <span>
+          <span v-if="authenticated">
             <b-button size="sm" class="mx-1 edit-btn" @click="modalShow = !modalShow">
               <font-awesome-icon icon="pen" />Edit
             </b-button>
@@ -77,6 +77,11 @@ export default {
       modalShow: false
     };
   },
+  computed: {
+    authenticated: function() {
+      return localStorage.getItem("username") != null;
+    }
+  },
   methods: {
     deletePost() {
       apiService
@@ -90,7 +95,16 @@ export default {
         .catch(error => alert(error));
     },
     addPoint() {},
-    addToFavorites() {}
+    addToFavorites() {
+      apiService
+        .addToFavs(this.id)
+        .then(response => {
+          if (response.status === 200) {
+            alert("Added post to favorites!");
+          }
+        })
+        .catch(error => alert(error));
+    }
   }
 };
 </script>

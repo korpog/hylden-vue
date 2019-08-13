@@ -113,8 +113,13 @@ export class APIService {
     const url = `${API_URL}/post/upvote/${slug}`;
   }
 
-  addToFavs(slug) {
-    const url = `${API_URL}/post/favorite/${slug}`;
+  addToFavs(post_id, username) {
+    const url = `${API_URL}/user/${username}`;
+    return axios.patch(url, post_id, {
+      headers: {
+        Authorization: `Token ${localStorage.getItem('token')}`
+      }
+    });
   }
 
 }
