@@ -64,8 +64,10 @@ export default {
         this.categories = data.results.map(x => x.name);
       });
     },
-    saveSubs() {
-      apiService.saveSubs("lizergus", this.selectedCategories);
+    saveSubs(evt) {
+      evt.preventDefault();
+      //apiService.saveSubs(this.username, this.selectedCategories);
+      alert(this.selectedCategories);
     }
   },
   mounted() {

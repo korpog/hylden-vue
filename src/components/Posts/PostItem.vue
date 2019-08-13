@@ -14,12 +14,12 @@
         <p class="my-auto py-1">
           <b-link id="title" :to="{ name: 'post', params: { slug: slug }}">{{ title }}</b-link>
           <span>
-          <b-button size="sm" class="mx-1 edit-btn" @click="modalShow = !modalShow">
-            <font-awesome-icon icon="pen"/>Edit
-          </b-button>
-          <b-button title="Delete this post" size="sm" class="mx-1 del-btn" @click="deletePost()">
-            <font-awesome-icon icon="trash"/>
-          </b-button>
+            <b-button size="sm" class="mx-1 edit-btn" @click="modalShow = !modalShow">
+              <font-awesome-icon icon="pen" />Edit
+            </b-button>
+            <b-button title="Delete this post" size="sm" class="mx-1 del-btn" @click="deletePost()">
+              <font-awesome-icon icon="trash" />
+            </b-button>
           </span>
         </p>
       </b-col>
@@ -32,13 +32,13 @@
       <b-col md="4" class="score">
         <b-button class="btn">
           Points: {{ score }}
-          <font-awesome-icon icon="plus-square"/>
+          <font-awesome-icon icon="plus-square" />
         </b-button>
       </b-col>
       <b-col md="4" class="fav">
         <b-button class="btn">
           Add to favorites
-          <font-awesome-icon icon="star"/>
+          <font-awesome-icon icon="star" />
         </b-button>
       </b-col>
       <b-col md="4" class="created">{{ created }}</b-col>
@@ -52,14 +52,14 @@
 
 <script>
 import { APIService } from "../../APIService";
-import PostEditForm from "./PostEditForm.vue"
+import PostEditForm from "./PostEditForm.vue";
 
 const apiService = new APIService();
 
 export default {
   name: "PostItem",
   components: {
-    PostEditForm,
+    PostEditForm
   },
   props: {
     id: Number,
@@ -79,20 +79,18 @@ export default {
   },
   methods: {
     deletePost() {
-      apiService.deletePost(this.slug)
-      .then(response => {
-        if(response.status === 204) {
-          alert("Post deleted!");
-          this.$router.go();
-        }
-      });
+      apiService
+        .deletePost(this.slug)
+        .then(response => {
+          if (response.status === 204) {
+            alert("Post deleted!");
+            this.$router.go();
+          }
+        })
+        .catch(error => alert(error));
     },
-    addPoint() {
-
-    },
-    addToFavorites() {
-      
-    }
+    addPoint() {},
+    addToFavorites() {}
   }
 };
 </script>

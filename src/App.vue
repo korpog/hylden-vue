@@ -20,8 +20,8 @@ export default {
   },
   data() {
     return {
-      authenticated: false,
-      authUser: '',
+      authenticated: localStorage.getItem('username') != null,
+      authUser: localStorage.getItem('username'),
     };
   },
   methods: {
