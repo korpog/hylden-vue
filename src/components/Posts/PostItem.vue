@@ -36,7 +36,7 @@
         </b-button>
       </b-col>
       <b-col md="4" class="fav">
-        <b-button class="btn">
+        <b-button class="btn" @click="addToFavorites()">
           Add to favorites
           <font-awesome-icon icon="star" />
         </b-button>
@@ -96,8 +96,9 @@ export default {
     },
     addPoint() {},
     addToFavorites() {
+      let username = localStorage.getItem("username");
       apiService
-        .addToFavs(this.id)
+        .addToFavs(this.id, username)
         .then(response => {
           if (response.status === 200) {
             alert("Added post to favorites!");

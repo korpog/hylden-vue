@@ -49,10 +49,11 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      apiService.login(this.form)
-      .then(() => {
-        this.$emit("handleLogin");
-        this.$router.push("/");
+      apiService.login(this.form).then(() => {
+        if (localStorage.getItem("username") != null) {
+          this.$emit("handleLogin");
+          this.$router.push("/");
+        }
       });
     }
   }

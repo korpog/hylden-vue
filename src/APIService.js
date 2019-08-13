@@ -65,18 +65,20 @@ export class APIService {
     axios.post(url, data).then(function (response) {
         alert(`User ${response.data["username"]} was successfully created`);
       })
-      .catch(error => console.log(error));
+      .catch(error => alert(error));
   }
 
   login(data) {
     const url = `${URL}/rest-auth/login/`;
     return axios.post(url, data)
       .then(response => {
-        localStorage.setItem('token', response.data["key"]);
-        localStorage.setItem('username', data["username"]);
-        alert("You have been successfully logged in!")
+        if (response.status === 200) {
+          localStorage.setItem('token', response.data["key"]);
+          localStorage.setItem('username', data["username"]);
+          alert("You have been successfully logged in!");
+        }
       })
-      .catch(error => console.log(error));
+      .catch(error => alert(error));
   }
 
   logout() {
@@ -114,7 +116,7 @@ export class APIService {
   }
 
   addToFavs(post_id, username) {
-    const url = `${API_URL}/user/${username}`;
+    const url = `${API_URL}/user/${username}/`;
     return axios.patch(url, post_id, {
       headers: {
         Authorization: `Token ${localStorage.getItem('token')}`
