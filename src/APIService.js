@@ -1,6 +1,7 @@
 import axios from 'axios';
 const URL = 'http://localhost:8000';
 const API_URL = 'http://localhost:8000/api';
+let slugify = require('slugify');
 export class APIService {
 
   constructor() {}
@@ -62,7 +63,7 @@ export class APIService {
 
   createUser(data) {
     const url = `${API_URL}/user/create`;
-    axios.post(url, data).then(function (response) {
+    axios.post(url, data).then(response => {
         alert(`User ${response.data["username"]} was successfully created`);
       })
       .catch(error => alert(error));
@@ -115,9 +116,13 @@ export class APIService {
     const url = `${API_URL}/post/upvote/${slug}`;
   }
 
-  addToFavs(post_id, username) {
-    const url = `${API_URL}/user/${username}/`;
-    return axios.patch(url, post_id, {
+  addToFavs(fav_post, username) {
+    let slug = slugify(username, {
+      replacement: '-',
+      lower: true,
+    });
+    const url = `${API_URL}/user/${slug}/`;
+    return axios.patch(url, fav_post, {
       headers: {
         Authorization: `Token ${localStorage.getItem('token')}`
       }
