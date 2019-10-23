@@ -116,13 +116,9 @@ export class APIService {
     const url = `${API_URL}/post/upvote/${slug}`;
   }
 
-  addToFavs(fav_post, username) {
-    let slug = slugify(username, {
-      replacement: '-',
-      lower: true,
-    });
-    const url = `${API_URL}/user/${slug}/`;
-    return axios.patch(url, fav_post, {
+  addToFavs(slug) {
+    const url = `${API_URL}/post/favorite/${slug}`;
+    return axios.patch(url, slug, {
       headers: {
         Authorization: `Token ${localStorage.getItem('token')}`
       }

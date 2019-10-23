@@ -96,12 +96,11 @@ export default {
     },
     addPoint() {},
     addToFavorites() {
-      let username = localStorage.getItem("username");
       apiService
-        .addToFavs(this.id, username)
+        .addToFavs(this.slug)
         .then(response => {
           if (response.status === 200) {
-            alert("Added post to favorites!");
+            alert("Added " + this.title + " to favorites!");
           }
         })
         .catch(error => alert(error));

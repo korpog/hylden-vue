@@ -74,6 +74,7 @@ export default {
     logout() {
       apiService.logout().then(() => {
         this.$emit("handleLogout");
+        this.$router.push("/");
       });
     }
   }
