@@ -112,8 +112,13 @@ export class APIService {
     });
   }
 
-  addPoint(slug) {
+  upvote(slug) {
     const url = `${API_URL}/post/upvote/${slug}`;
+    return axios.patch(url, slug, {
+      headers: {
+        Authorization: `Token ${localStorage.getItem('token')}`
+      }
+    });
   }
 
   addToFavs(slug) {

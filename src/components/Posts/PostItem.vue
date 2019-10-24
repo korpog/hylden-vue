@@ -30,7 +30,7 @@
     <b-row class="justify-content-center source mb-2">Source: {{ source }}</b-row>
     <b-row class="footer p-1" align-v="center">
       <b-col md="4" class="score">
-        <b-button class="btn">
+        <b-button class="btn" @click="addPoint()">
           Points: {{ score }}
           <font-awesome-icon icon="plus-square" />
         </b-button>
@@ -94,7 +94,16 @@ export default {
         })
         .catch(error => alert(error));
     },
-    addPoint() {},
+    addPoint() {
+      apiService.
+      upvote(this.slug)
+      .then(response => {
+        if (response.status == 200) {
+          this.score = response.data.score;
+        }
+      })
+      .catch(error => alert(error))
+    },
     addToFavorites() {
       apiService
         .addToFavs(this.slug)
