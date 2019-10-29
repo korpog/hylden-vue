@@ -104,7 +104,7 @@ export class APIService {
   }
 
   saveSubs(subs) {
-    const url = `${API_URL}/user/favorites/`;
+    const url = `${API_URL}/user/save-subscriptions`;
     return axios.patch(url, subs, {
       headers: {
         Authorization: `Token ${localStorage.getItem('token')}`

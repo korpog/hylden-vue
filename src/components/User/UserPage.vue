@@ -66,8 +66,13 @@ export default {
     },
     saveSubs(evt) {
       evt.preventDefault();
-      //apiService.saveSubs(this.username, this.selectedCategories);
-      alert(this.selectedCategories);
+      apiService.saveSubs(this.selectedCategories)
+      .then(response => {
+        if(response.status == 200) {
+          alert("You are now subscribed to following categories: " + response.data.subscriptions)
+        }
+      })
+      .catch(error => console.log(error))
     }
   },
   mounted() {
