@@ -112,6 +112,15 @@ export class APIService {
     });
   }
 
+  removeSubs(subs) {
+    const url = `${API_URL}/user/remove-subscriptions`;
+    return axios.patch(url, subs, {
+      headers: {
+        Authorization: `Token ${localStorage.getItem('token')}`
+      }
+    });
+  }
+
   upvote(slug) {
     const url = `${API_URL}/post/upvote/${slug}`;
     return axios.patch(url, slug, {

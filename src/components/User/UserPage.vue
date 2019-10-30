@@ -3,7 +3,7 @@
     <b-row class="my-3 text-center">
       <b-col>
         <h2>Hello, {{username}}!</h2>
-        <hr>
+        <hr />
         <div>
           <b-form class="w-75 mx-auto pb-2" @submit="resetPassword">
             <b-form-group id="input-reset" label="Email" label-for="input-reset">
@@ -13,7 +13,7 @@
           </b-form>
         </div>
 
-        <hr>
+        <hr />
         <h3>Subscriptions</h3>
         <div>
           <b-form class="w-75 mx-auto pb-2" @submit="saveSubs">
@@ -29,7 +29,8 @@
                 :select-size="4"
               ></b-form-select>
             </b-form-group>
-            <b-button type="submit" variant="primary">Save changes</b-button>
+            <b-button type="submit" variant="primary">Subscribe</b-button>
+            <b-button class="btn btn-danger ml-2" @click="removeSubs()">Unsubscribe</b-button>
           </b-form>
         </div>
       </b-col>
@@ -66,13 +67,30 @@ export default {
     },
     saveSubs(evt) {
       evt.preventDefault();
-      apiService.saveSubs(this.selectedCategories)
-      .then(response => {
-        if(response.status == 200) {
-          alert("You are now subscribed to following categories: " + response.data.subscriptions)
-        }
-      })
-      .catch(error => console.log(error))
+      apiService
+        .saveSubs(this.selectedCategories)
+        .then(response => {
+          if (response.status == 200) {
+            alert(
+              "You are now subscribed to following categories: " +
+                response.data.subscriptions
+            );
+          }
+        })
+        .catch(error => console.log(error));
+    },
+    removeSubs() {
+      apiService
+        .removeSubs(this.selectedCategories)
+        .then(response => {
+          if (response.status == 200) {
+            alert(
+              "You are no longer subscribed to following categories: " +
+                this.selectedCategories
+            );
+          }
+        })
+        .catch(error => console.log(error));
     }
   },
   mounted() {
