@@ -5,9 +5,31 @@
         <h2>Hello, {{username}}!</h2>
         <hr />
         <div>
+          <b-form-group
+            class="w-75 mx-auto pb-2"
+            id="avatar-upload"
+            label="Upload avatar image: "
+            label-for="avatar-upload"
+          >
+            <b-form-file
+              accept="image/*"
+              placeholder="Choose a file or drop it here..."
+              drop-placeholder="Drop file here..."
+            ></b-form-file>
+          <b-button class="my-2" variant="primary">Upload</b-button>
+          </b-form-group>
+        </div>
+        <hr />
+        <div>
           <b-form class="w-75 mx-auto pb-2" @submit="resetPassword">
             <b-form-group id="input-reset" label="Email" label-for="input-reset">
-              <b-form-input id="input-1" v-model="email" required placeholder="Your email"></b-form-input>
+              <b-form-input
+                class="m-auto"
+                id="input-1"
+                v-model="email"
+                required
+                placeholder="Your email"
+              ></b-form-input>
             </b-form-group>
             <b-button type="submit" variant="primary">Reset password</b-button>
           </b-form>

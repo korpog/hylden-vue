@@ -15,7 +15,7 @@
           <b-link id="title" :to="{ name: 'post', params: { slug: slug }}">{{ title }}</b-link>
           <span v-if="authenticated">
             <b-button size="sm" class="mx-1 edit-btn" @click="modalShow = !modalShow">
-              <font-awesome-icon icon="pen" /> Edit
+              <font-awesome-icon icon="pen" />Edit
             </b-button>
             <b-button title="Delete this post" size="sm" class="mx-1 del-btn" @click="deletePost()">
               <font-awesome-icon icon="trash" />
@@ -95,14 +95,16 @@ export default {
         .catch(error => alert(error));
     },
     addPoint() {
-      apiService.
-      upvote(this.slug)
-      .then(response => {
-        if (response.status == 200) {
-          this.score = response.data.score;
-        }
-      })
-      .catch(error => alert(error))
+      apiService
+        .upvote(this.slug)
+        .then(response => {
+          if (response.status == 200) {
+            this.score = response.data.score;
+          }
+        })
+        .catch(error =>
+          alert("You can't do that! Please register and/or log in\n" + error)
+        );
     },
     addToFavorites() {
       apiService
@@ -112,7 +114,9 @@ export default {
             alert("Added " + this.title + " to favorites!");
           }
         })
-        .catch(error => alert(error));
+        .catch(error =>
+          alert("You can't do that! Please register and/or log in\n" + error)
+        );
     }
   }
 };
