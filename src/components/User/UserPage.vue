@@ -15,8 +15,9 @@
               accept="image/*"
               placeholder="Choose a file or drop it here..."
               drop-placeholder="Drop file here..."
+              v-model="avatar"
             ></b-form-file>
-          <b-button class="my-2" variant="primary">Upload</b-button>
+            <b-button class="my-2" variant="primary" @click="uploadImg()">Upload</b-button>
           </b-form-group>
         </div>
         <hr />
@@ -73,6 +74,7 @@ export default {
   data() {
     return {
       email: "",
+      avatar: null,
       categories: [],
       selectedCategories: [],
       userData: {}
@@ -110,6 +112,18 @@ export default {
               "You are no longer subscribed to following categories: " +
                 this.selectedCategories
             );
+          }
+        })
+        .catch(error => console.log(error));
+    },
+    uploadImg() {
+      let formData = new FormData();
+      formData.append('avatar', this.avatar);
+      apiService
+        .uploadAvatar(formData)
+        .then(response => {
+          if (response.status == 200) {
+            alert("Avatar successfully uploaded!");
           }
         })
         .catch(error => console.log(error));

@@ -139,4 +139,13 @@ export class APIService {
     });
   }
 
+  uploadAvatar(avatar) {
+    const url = `${API_URL}/user/avatar-upload`;
+    return axios.patch(url, avatar, {
+      headers: {
+        Authorization: `Token ${localStorage.getItem('token')}`,
+      }
+    });
+  }
+
 }
