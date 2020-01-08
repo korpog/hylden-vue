@@ -36,13 +36,23 @@
             <b-button size="sm" class="btn mr-2" to="/signup">Sign Up</b-button>
             <b-button size="sm" class="btn" to="/login">Log In</b-button>
           </b-nav-item>
-          <b-nav-item-dropdown class="ml-2" right v-else>
-            <template slot="button-content">
-              <b id="username">{{authUser}}</b>
-            </template>
-            <b-dropdown-item :to="{ name: 'user', params: { username: authUser}}">Profile</b-dropdown-item>
-            <b-dropdown-item @click="logout()">Logout</b-dropdown-item>
-          </b-nav-item-dropdown>
+          <div class="mx-3" v-else>
+            <b-img
+              left
+              width="32px"
+              height="32px"
+              src="http://127.0.0.1:8000/media/avatar/korpog/korpog.jpg"
+              alt="user-avatar"
+              class="mr-1"
+            ></b-img>
+            <b-nav-item-dropdown class="ml-3" right>
+              <template slot="button-content">
+                <b id="username">{{authUser}}</b>
+              </template>
+              <b-dropdown-item :to="{ name: 'user', params: { username: authUser}}">Profile</b-dropdown-item>
+              <b-dropdown-item @click="logout()">Logout</b-dropdown-item>
+            </b-nav-item-dropdown>
+          </div>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -59,7 +69,7 @@ export default {
   components: {},
   props: {
     authenticated: { type: Boolean, default: false },
-    authUser: {type: String, default: ''},
+    authUser: { type: String, default: "" }
   },
   data() {
     return {
