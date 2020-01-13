@@ -41,8 +41,8 @@
               left
               width="32px"
               height="32px"
-              src="http://127.0.0.1:8000/media/avatar/korpog/korpog.jpg"
-              alt="user-avatar"
+              v-bind:src=getAvatarPath()
+              alt="avatar"
               class="mr-1"
             ></b-img>
             <b-nav-item-dropdown class="ml-3" right>
@@ -86,6 +86,11 @@ export default {
         this.$emit("handleLogout");
         this.$router.push("/");
       });
+    },
+    getAvatarPath() {
+      let username = this.authUser;
+      let path = `http://127.0.0.1:8000/media/avatar/${username}/${username}.jpg`;
+      return path;
     }
   }
 };

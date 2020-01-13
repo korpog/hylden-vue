@@ -101,7 +101,7 @@ export default {
             );
           }
         })
-        .catch(error => console.log(error));
+        .catch(error => alert(error));
     },
     removeSubs() {
       apiService
@@ -114,7 +114,7 @@ export default {
             );
           }
         })
-        .catch(error => console.log(error));
+        .catch(error => alert(error));
     },
     uploadImg() {
       let formData = new FormData();
@@ -122,11 +122,12 @@ export default {
       apiService
         .uploadAvatar(formData)
         .then(response => {
-          if (response.status == 200) {
+          if (response.status == 201) {
             alert("Avatar successfully uploaded!");
+            location.reload();
           }
         })
-        .catch(error => console.log(error));
+        .catch(error => alert(error));
     }
   },
   mounted() {

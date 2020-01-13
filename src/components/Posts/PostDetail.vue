@@ -37,7 +37,7 @@ export default {
         .then(data => {
           this.itemData = data;
         })
-        .catch(error => console.log(error));
+        .catch(error => alert(error));
     }
   },
 
