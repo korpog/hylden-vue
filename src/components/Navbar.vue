@@ -42,6 +42,7 @@
               width="32px"
               height="32px"
               v-bind:src=getAvatarPath()
+              onerror="this.onerror=null;this.src='http://127.0.0.1:8000/media/avatar/placeholder.png';"
               alt="avatar"
               class="mr-1"
             ></b-img>
