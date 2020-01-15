@@ -27,18 +27,19 @@
     <b-row class="justify-content-center text">
       <p class="p-2">{{ text }}</p>
     </b-row>
+    <hr />
     <b-row class="justify-content-center source mb-2">Source: {{ source }}</b-row>
     <b-row class="footer p-1" align-v="center">
       <b-col md="4" class="score">
-        <b-button class="btn" @click="addPoint()">
-          Points: {{ score }}
-          <font-awesome-icon icon="plus-square" />
+        Points: {{ score }}
+        <b-button v-if="authenticated" class="btn" @click="addPoint()">
+          <font-awesome-icon v-bind:class="{ active: upvoted }" icon="plus-square" />
         </b-button>
       </b-col>
       <b-col md="4" class="fav">
-        <b-button class="btn" @click="addToFavorites()">
+        <b-button v-if="authenticated" class="btn btn-fav" @click="addToFavorites()">
           Add to favorites
-          <font-awesome-icon icon="star" />
+          <font-awesome-icon v-bind:class="{ active: favorited }" icon="star" />
         </b-button>
       </b-col>
       <b-col md="4" class="created">{{ created }}</b-col>
@@ -74,7 +75,9 @@ export default {
   data() {
     return {
       hover: false,
-      modalShow: false
+      modalShow: false,
+      upvoted: false,
+      favorited: false,
     };
   },
   computed: {
@@ -100,6 +103,7 @@ export default {
         .then(response => {
           if (response.status == 200) {
             this.score = response.data.score;
+            this.upvoted = !this.upvoted;
           }
         })
         .catch(error =>
@@ -112,6 +116,7 @@ export default {
         .then(response => {
           if (response.status === 200) {
             alert("Added " + this.title + " to favorites!");
+            this.favorited = !this.favorited;
           }
         })
         .catch(error =>
@@ -164,5 +169,8 @@ export default {
   border: none;
   outline: none;
   float: right;
+}
+.active {
+  color: gold;
 }
 </style>
