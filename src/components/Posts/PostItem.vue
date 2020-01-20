@@ -25,10 +25,12 @@
       </b-col>
     </b-row>
     <b-row class="justify-content-center text">
-      <p class="p-2">{{ text }}</p>
+      <p class="m-1">{{ text }}</p>
     </b-row>
     <hr />
-    <b-row class="justify-content-center source mb-2">Source: {{ source }}</b-row>
+    <b-row class="justify-content-center source mb-2"><div>
+  <b-link :href="source">Source</b-link>
+</div></b-row>
     <b-row class="footer p-1" align-v="center">
       <b-col md="4" class="score">
         Points: {{ score }}
