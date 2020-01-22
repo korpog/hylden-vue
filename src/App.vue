@@ -1,7 +1,7 @@
 <template>
   <b-container id="app" class="mw-100">
-    <Titlebar/>
-    <Navbar @handleLogout="handleLogout" :authenticated="authenticated" :authUser="authUser"/>
+    <Titlebar />
+    <Navbar @handleLogout="handleLogout" :authenticated="authenticated" :authUser="authUser" />
     <transition name="trans">
       <router-view @handleLogin="handleLogin"></router-view>
     </transition>
@@ -11,6 +11,9 @@
 <script>
 import Titlebar from "./components/Titlebar.vue";
 import Navbar from "./components/Navbar.vue";
+import { APIService } from "./APIService";
+
+const apiService = new APIService();
 
 export default {
   name: "app",
@@ -20,18 +23,26 @@ export default {
   },
   data() {
     return {
-      authenticated: localStorage.getItem('username') != null,
-      authUser: localStorage.getItem('username'),
+      authenticated: localStorage.getItem("username") != null,
+      authUser: localStorage.getItem("username"),
+      userData: {}
     };
   },
   methods: {
-    handleLogin: function() {
-      this.authenticated = true;
-      this.authUser = localStorage.getItem('username');
+    getUserData(username) {
+      apiService.getUserData(username).then(data => {
+        this.userData = data;
+      });
     },
-    handleLogout: function() {
+    handleLogin() {
+      this.authenticated = true;
+      this.authUser = localStorage.getItem("username");
+      this.getUserData(this.authUser);
+    },
+    handleLogout() {
       this.authenticated = false;
-      this.authUser = '';
+      this.authUser = "";
+      this.userData = {};
     }
   }
 };

@@ -22,7 +22,7 @@
       </b-form-group>
 
       <b-form-group id="input-group-4" label="Source" label-for="input-4">
-        <b-form-input id="input-4" v-model="form.source" required placeholder="source"></b-form-input>
+        <b-form-input type="url" id="input-4" v-model="form.source" required placeholder="source (url)"></b-form-input>
       </b-form-group>
 
       <b-button type="submit" variant="primary">Submit</b-button>
@@ -57,7 +57,7 @@ export default {
             alert("Post created!");
           }
         })
-        .catch(error => console.log(error));
+        .catch(error => alert(error));
     },
     getCategories() {
       apiService.getCategories().then(data => {

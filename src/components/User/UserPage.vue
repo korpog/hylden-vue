@@ -77,7 +77,6 @@ export default {
       avatar: null,
       categories: [],
       selectedCategories: [],
-      userData: {}
     };
   },
   methods: {
@@ -118,7 +117,7 @@ export default {
     },
     uploadImg() {
       let formData = new FormData();
-      formData.append('avatar', this.avatar);
+      formData.append("avatar", this.avatar);
       apiService
         .uploadAvatar(formData)
         .then(response => {

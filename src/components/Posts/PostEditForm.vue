@@ -17,7 +17,7 @@
       </b-form-group>
 
       <b-form-group id="input-group-3" label="Source" label-for="input-3">
-        <b-form-input id="input-3" v-model="form.source" required placeholder="Edit source"></b-form-input>
+        <b-form-input type="url" id="input-3" v-model="form.source" required placeholder="Edit source"></b-form-input>
       </b-form-group>
 
       <b-button type="submit" variant="primary">Save changes</b-button>
@@ -54,7 +54,7 @@ export default {
             alert("Successfully updated!");
           }
         })
-        .catch(error => console.log(error));
+        .catch(error => alert(error));
     }
   }
 };

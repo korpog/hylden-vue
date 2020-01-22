@@ -1,7 +1,7 @@
 import axios from 'axios';
 const URL = 'http://localhost:8000';
 const API_URL = 'http://localhost:8000/api';
-let slugify = require('slugify');
+// let slugify = require('slugify');
 export class APIService {
 
   constructor() {}
@@ -10,20 +10,20 @@ export class APIService {
     const url = `${API_URL}/posts/${query}`;
     return axios.get(url)
       .then(response => response.data)
-      .catch(error => console.log(error));
+      .catch(error => alert(error));
   }
 
   getPostsByUrl(url) {
     return axios.get(url)
       .then(response => response.data)
-      .catch(error => console.log(error));
+      .catch(error => alert(error));
   }
 
   getPostBySlug(slug) {
     const url = `${API_URL}/post/${slug}`;
     return axios.get(url)
       .then(response => response.data)
-      .catch(error => console.log(error));
+      .catch(error => alert(error));
   }
 
   createPost(post) {
@@ -57,7 +57,7 @@ export class APIService {
     const url = `${API_URL}/categories/`;
     return axios.get(url)
       .then(response => response.data)
-      .catch(error => console.log(error));
+      .catch(error => alert(error));
   }
 
 
@@ -66,6 +66,13 @@ export class APIService {
     axios.post(url, data).then(response => {
         alert(`User ${response.data["username"]} was successfully created`);
       })
+      .catch(error => alert(error));
+  }
+
+  getUserData(username) {
+    const url = `${API_URL}/user/${username}`;
+    axios.get(url)
+      .then(response => response.data)
       .catch(error => alert(error));
   }
 
@@ -90,12 +97,12 @@ export class APIService {
         localStorage.removeItem("username");
         alert("You have been logged out!");
       })
-      .catch(error => console.log(error));
+      .catch(error => alert(error));
   }
 
   resetPassword(email) {
     const url = `${URL}/rest-auth/password/reset/`;
-    return axios.post(url, email).catch(e => console.log(e));
+    return axios.post(url, email).catch(error => alert(error));
   }
 
   changePassword(data) {
