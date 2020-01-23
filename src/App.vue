@@ -31,6 +31,7 @@ export default {
   methods: {
     getUserData(username) {
       apiService.getUserData(username).then(data => {
+        alert(data);
         this.userData = data;
       });
     },

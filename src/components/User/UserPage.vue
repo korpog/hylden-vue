@@ -21,20 +21,6 @@
           </b-form-group>
         </div>
         <hr />
-        <div>
-          <b-form class="w-75 mx-auto pb-2" @submit="resetPassword">
-            <b-form-group id="input-reset" label="Email" label-for="input-reset">
-              <b-form-input
-                class="m-auto"
-                id="input-1"
-                v-model="email"
-                required
-                placeholder="Your email"
-              ></b-form-input>
-            </b-form-group>
-            <b-button type="submit" variant="primary">Reset password</b-button>
-          </b-form>
-        </div>
 
         <hr />
         <h3>Subscriptions</h3>
@@ -81,7 +67,7 @@ export default {
   },
   methods: {
     resetPassword() {
-      apiService.resetPassword("da");
+      apiService.resetPassword(this.email);
     },
     getCategories() {
       apiService.getCategories().then(data => {
