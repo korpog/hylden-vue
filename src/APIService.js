@@ -76,6 +76,15 @@ export class APIService {
       .catch(error => alert(error));
   }
 
+  getUserFavorites(username) {
+    const url = `${API_URL}/user/${username}`;
+    axios.get(url)
+      .then(response => response.data["favorited"])
+      .catch(error => alert(error));
+  }
+
+
+
   login(data) {
     const url = `${URL}/rest-auth/login/`;
     return axios.post(url, data)

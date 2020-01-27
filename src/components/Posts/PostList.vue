@@ -1,6 +1,10 @@
 <template>
   <b-container>
     <h1 class="mb-1 pb-1">Posts</h1>
+    <div>
+      <b-form-select v-model="selected" :options="options" class="m-2" @change="getSortedPosts()"></b-form-select>
+    </div>
+    <hr />
     <b-button
       size="lg"
       class="btn mr-3 my-1"
@@ -8,7 +12,7 @@
       @click="prevPage()"
       :disabled="!previousUrl"
     >
-      <font-awesome-icon icon="angle-left"/> Previous
+      <font-awesome-icon icon="angle-left" />Previous
     </b-button>
     <b-button
       size="lg"
@@ -18,7 +22,7 @@
       :disabled="!nextUrl"
     >
       Next
-      <font-awesome-icon icon="angle-right"/>
+      <font-awesome-icon icon="angle-right" />
     </b-button>
 
     <div v-for="post in posts" v-bind:key="post.id">
@@ -53,6 +57,14 @@ export default {
     return {
       previousUrl: "",
       nextUrl: "",
+      selected: null,
+      options: [
+        { value: null, text: "Sort posts by..." },
+        { value: "ta", text: "Title ascending" },
+        { value: "td", text: "Title descending" },
+        { value: "ca", text: "Date created ascending" },
+        { value: "cd", text: "Date created descending" }
+      ],
       posts: []
     };
   },
@@ -64,6 +76,26 @@ export default {
         this.nextUrl = data.next;
         this.posts = data.results;
       });
+    },
+    getSortedPosts() {
+      let query = "?ordering=-title";
+      switch (this.selected) {
+        case "ta":
+          query = "?ordering=title";
+          break;
+        case "td":
+          query = "?ordering=-title";
+          break;
+        case "ca":
+          query = "?ordering=created";
+          break;
+        case "cd":
+          query = "?ordering=-created";
+          break;
+        default:
+          query = "";
+      }
+      this.getPosts(query);
     },
     prevPage() {
       apiService.getPostsByUrl(this.previousUrl).then(data => {

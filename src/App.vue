@@ -25,14 +25,18 @@ export default {
     return {
       authenticated: localStorage.getItem("username") != null,
       authUser: localStorage.getItem("username"),
-      userData: {}
+      userUpvotes: [],
+      userFavorites: [],
+      userFriends: [],
     };
   },
   methods: {
     getUserData(username) {
       apiService.getUserData(username).then(data => {
         alert(data);
-        this.userData = data;
+        this.userUpvotes = data["upvoted"];
+        this.userFavorites = data["favorited"];
+        this.userFriends = data["friends"];
       });
     },
     handleLogin() {
@@ -43,7 +47,6 @@ export default {
     handleLogout() {
       this.authenticated = false;
       this.authUser = "";
-      this.userData = {};
     }
   }
 };
