@@ -1,8 +1,9 @@
 <template>
   <b-container>
     <h1 class="mb-1 pb-1">Posts</h1>
-    <div>
-      <b-form-select v-model="selected" :options="options" class="m-2" @change="getSortedPosts()"></b-form-select>
+    <div class="mt-3 w-75 mx-auto">
+      <p><b>Sort by</b></p>
+      <b-form-select v-model="selected" :options="options" class="m-1" @change="getSortedPosts()"></b-form-select>
     </div>
     <hr />
     <b-button
@@ -59,7 +60,6 @@ export default {
       nextUrl: "",
       selected: null,
       options: [
-        { value: null, text: "Sort posts by..." },
         { value: "ta", text: "Title ascending" },
         { value: "td", text: "Title descending" },
         { value: "ca", text: "Date created ascending" },
@@ -78,7 +78,7 @@ export default {
       });
     },
     getSortedPosts() {
-      let query = "?ordering=-title";
+      let query = "";
       switch (this.selected) {
         case "ta":
           query = "?ordering=title";
