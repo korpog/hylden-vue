@@ -62,6 +62,7 @@ export default {
       email: "",
       avatar: null,
       categories: [],
+      usersList: [],
       selectedCategories: [],
     };
   },
@@ -70,8 +71,15 @@ export default {
       apiService.resetPassword(this.email);
     },
     getCategories() {
-      apiService.getCategories().then(data => {
+      apiService.getCategories()
+      .then(data => {
         this.categories = data.results.map(x => x.name);
+      });
+    },
+    getAllUsers() {
+      apiService.getAllUsers()
+      .then(data => {
+        this.usersList = data.results.map(x => x.user);
       });
     },
     saveSubs(evt) {
@@ -117,6 +125,7 @@ export default {
   },
   mounted() {
     this.getCategories();
+    this.getAllUsers();
   }
 };
 </script>

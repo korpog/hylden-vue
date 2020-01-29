@@ -69,6 +69,13 @@ export class APIService {
       .catch(error => alert(error));
   }
 
+  getAllUsers() {
+    const url = `${API_URL}/users`;
+    axios.get(url)
+    .then(response => response.data)
+    .catch(error => alert(error));
+  }
+
   getUserData(username) {
     const url = `${API_URL}/user/${username}`;
     axios.get(url)
